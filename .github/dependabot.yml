@@ -1,17 +1,24 @@
-# .github/dependabot.yml
 version: 2
 updates:
-    # Major + Minor updates combined
+    # Minor updates → branch main-minor
     - package-ecosystem: npm
       directory: "/"
-      target-branch: main
+      target-branch: main-minor
       schedule:
-          interval: monthly # closest GitHub supports for bi-monthly & half-year
+          interval: monthly
       allow:
-          - update-type: version-update:semver-major
           - update-type: version-update:semver-minor
 
-    # Security updates
+    # Major updates → branch main-major
+    - package-ecosystem: npm
+      directory: "/"
+      target-branch: main-major
+      schedule:
+          interval: monthly
+      allow:
+          - update-type: version-update:semver-major
+
+    # Security updates → branch main
     - package-ecosystem: npm
       directory: "/"
       target-branch: main
