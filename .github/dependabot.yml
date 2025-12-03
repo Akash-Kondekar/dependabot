@@ -10,8 +10,8 @@ updates:
       ignore:
           - dependency-name: "*"
             update-types:
-                - major
-                - patch
+                - version-update:semver-major
+                - version-update:semver-patch
 
     # Major updates → monthly, merge every 6 months manually
     - package-ecosystem: npm
@@ -23,8 +23,8 @@ updates:
       ignore:
           - dependency-name: "*"
             update-types:
-                - minor
-                - patch
+                - version-update:semver-minor
+                - version-update:semver-patch
 
     # Security updates → daily, handled automatically
     - package-ecosystem: npm
