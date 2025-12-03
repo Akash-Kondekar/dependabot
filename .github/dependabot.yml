@@ -3,7 +3,7 @@ updates:
     # Minor updates every 2 months
     - package-ecosystem: npm
       directory: "/"
-      target-branch: develop
+      target-branch: main
       schedule:
           interval: "monthly" # closest to 2 months
       allow:
@@ -12,7 +12,7 @@ updates:
     # Major updates every 6 months
     - package-ecosystem: npm
       directory: "/"
-      target-branch: develop
+      target-branch: main
       schedule:
           interval: "monthly" # GitHub only supports monthly
       allow:
@@ -21,7 +21,7 @@ updates:
     # Security updates always
     - package-ecosystem: npm
       directory: "/"
-      target-branch: develop
+      target-branch: main
       schedule:
           interval: "daily"
       security-updates-only: true
