@@ -1,13 +1,27 @@
 version: 2
 updates:
+    # Minor updates every 2 months
     - package-ecosystem: npm
       directory: "/"
-      target-branch: main
+      target-branch: develop
       schedule:
-          interval: daily
-      ignore:
-          - dependency-name: "*"
-            update-types:
-                - version-update:semver-major
-                - version-update:semver-minor
-                - version-update:semver-patch
+          interval: "monthly" # closest to 2 months
+      allow:
+          - update-type: version-update:semver-minor
+
+    # Major updates every 6 months
+    - package-ecosystem: npm
+      directory: "/"
+      target-branch: develop
+      schedule:
+          interval: "monthly" # GitHub only supports monthly
+      allow:
+          - update-type: version-update:semver-major
+
+    # Security updates always
+    - package-ecosystem: npm
+      directory: "/"
+      target-branch: develop
+      schedule:
+          interval: "daily"
+      security-updates-only: true
