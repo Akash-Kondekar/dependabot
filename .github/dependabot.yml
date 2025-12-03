@@ -1,51 +1,35 @@
 version: 2
 updates:
-    # Minor updates → bi-monthly
-    - package-ecosystem: "npm"
+    # Minor updates → monthly, merge every 2 months manually
+    - package-ecosystem: npm
       directory: "/"
-      target-branch: "main-minor"
+      target-branch: main-minor
       schedule:
-          interval: "cron"
-          cron: "0 0 1 */2 *" # minute 0, hour 0, day 1, every 2 months
-          timezone: "UTC"
+          interval: monthly
       open-pull-requests-limit: 5
-      # Grouping rules to only include minor updates
-      groups:
-          minor-updates:
-              update-types:
-                  - minor
-      # Ignore major and patch updates
       ignore:
           - dependency-name: "*"
             update-types:
                 - major
                 - patch
 
-    # Major updates → half-yearly
-    - package-ecosystem: "npm"
+    # Major updates → monthly, merge every 6 months manually
+    - package-ecosystem: npm
       directory: "/"
-      target-branch: "main-major"
+      target-branch: main-major
       schedule:
-          interval: "cron"
-          cron: "0 0 1 1,7 *" # minute 0, hour 0, day 1, months Jan & Jul → every 6 months
-          timezone: "UTC"
+          interval: monthly
       open-pull-requests-limit: 5
-      # Grouping rules to only include major updates
-      groups:
-          major-updates:
-              update-types:
-                  - major
-      # Ignore minor and patch updates
       ignore:
           - dependency-name: "*"
             update-types:
                 - minor
                 - patch
 
-    # Security updates → daily (Dependabot security updates must be enabled in repo settings)
-    - package-ecosystem: "npm"
+    # Security updates → daily, handled automatically
+    - package-ecosystem: npm
       directory: "/"
-      target-branch: "main"
+      target-branch: main
       schedule:
           interval: daily
       open-pull-requests-limit: 5
