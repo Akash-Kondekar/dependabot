@@ -104,6 +104,6 @@
         "vite-plugin-eslint2": "^5.0.4",
         "vite-plugin-markdown": "^2.2.0",
         "vite-plugin-pwa": "^0.21.1",
-        "vitest": "^3.0.8"
+        "vitest": "^4.0.15"
     }
 }
