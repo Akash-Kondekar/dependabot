@@ -1,13 +1,14 @@
 version: 2
 updates:
-    - package-ecosystem: "npm"
+    - package-ecosystem: npm
       directory: "/"
-      target-branch: "main"
+      target-branch: main
       schedule:
-          interval: "daily"
+          interval: daily
+      # Block all automatic updates from the daily job
       ignore:
           - dependency-name: "*"
             update-types:
-                - "version-update:semver-major"
-                - "version-update:semver-minor"
-                - "version-update:semver-patch"
+                - version-update:semver-major
+                - version-update:semver-minor
+                - version-update:semver-patch
