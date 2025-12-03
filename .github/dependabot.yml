@@ -1,35 +1,51 @@
 version: 2
 updates:
-    # Minor updates → branch main-minor
+    # Minor updates → bi-monthly
     - package-ecosystem: "npm"
       directory: "/"
       target-branch: "main-minor"
       schedule:
-          interval: "monthly"
-      allow:
+          interval: "cron"
+          cron: "0 0 1 */2 *" # minute 0, hour 0, day 1, every 2 months
+          timezone: "UTC"
+      open-pull-requests-limit: 5
+      # Grouping rules to only include minor updates
+      groups:
+          minor-updates:
+              update-types:
+                  - minor
+      # Ignore major and patch updates
+      ignore:
           - dependency-name: "*"
             update-types:
-                - "version-update:semver-minor"
-      open-pull-requests-limit: 10
+                - major
+                - patch
 
-    # Major updates → branch main-major
+    # Major updates → half-yearly
     - package-ecosystem: "npm"
       directory: "/"
       target-branch: "main-major"
       schedule:
-          interval: "monthly"
-      allow:
+          interval: "cron"
+          cron: "0 0 1 1,7 *" # minute 0, hour 0, day 1, months Jan & Jul → every 6 months
+          timezone: "UTC"
+      open-pull-requests-limit: 5
+      # Grouping rules to only include major updates
+      groups:
+          major-updates:
+              update-types:
+                  - major
+      # Ignore minor and patch updates
+      ignore:
           - dependency-name: "*"
             update-types:
-                - "version-update:semver-major"
-      open-pull-requests-limit: 10
+                - minor
+                - patch
 
-    # Security updates → branch main (Dependabot security updates run against the repository default branch)
+    # Security updates → daily (Dependabot security updates must be enabled in repo settings)
     - package-ecosystem: "npm"
       directory: "/"
-      target-branch: "main" # note: security updates are raised against the default branch regardless; this is fine if default is main
+      target-branch: "main"
       schedule:
-          interval: "daily"
-      open-pull-requests-limit: 10
-      # to only run security updates, use groups/applies-to or rely on repo settings to enable Dependabot security updates;
-      # Dependabot will open security PRs automatically when security alerts are found
+          interval: daily
+      open-pull-requests-limit: 5
