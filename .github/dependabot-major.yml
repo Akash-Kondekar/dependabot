@@ -18,7 +18,7 @@ jobs:
                   -d '{
                     "package-ecosystem": "npm",
                     "directory": "/",
-                    "target-branch": "DXT-790-adjust-the-frequency-of-dependabot-update-once-every-4-sprints",
+                    "target-branch": "main",
                     "allow": [{
                       "update-type": "version-update:semver-major"
                     }]
