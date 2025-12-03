@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="content-security-policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' https://www.birmingham.ac.uk/; connect-src 'self' %VITE_APP_API_VIP% %VITE_APP_WS_VIP%; frame-src 'self' blob:; object-src 'none'; base-uri 'self'"/>
+        <link href="/favicon.ico" rel="icon" type="image/svg+xml" />
+        <link href="%BASE_URL%manifest.json" rel="manifest" />
+        <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+        <title>%VITE_APP_WEBSITE_NAME%</title>
+    </head>
+    <body>
+        <noscript>You need to enable JavaScript to run this app.</noscript>
+        <div id="root"></div>
+        <script src="/src/main.jsx" type="module"></script>
+    </body>
+</html>

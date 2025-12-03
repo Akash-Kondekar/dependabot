@@ -1,0 +1,23 @@
+#!/bin/bash
+
+echo "Performing a lint check.."
+
+# Run tests
+npm run lint
+
+# Check if tests were successful
+if [ $? -ge 1 ]; then
+ echo "Lint check failed. Aborting commit."
+ exit 1
+fi
+
+echo "Lint check  passed. Proceeding with build."
+
+yarn run build:development 
+
+if [ $? -ge 1 ]; then
+ echo "Build failed. Aborting commit."
+ exit 1
+fi
+
+echo "Proceeding with commit."

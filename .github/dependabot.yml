@@ -1,0 +1,13 @@
+version: 2
+updates:
+    - package-ecosystem: "npm"
+      directory: "/"
+      target-branch: "DXT-790-adjust-the-frequency-of-dependabot-update-once-every-4-sprints"
+      schedule:
+          interval: "daily"
+      ignore:
+          - dependency-name: "*"
+            update-types:
+                - "version-update:semver-major"
+                - "version-update:semver-minor"
+                - "version-update:semver-patch"

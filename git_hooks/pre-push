@@ -1,0 +1,14 @@
+#!/bin/bash
+
+echo "Running tests before push..."
+
+# Run tests
+yarn test
+
+# Check if tests were successful
+if [ $? -ne 0 ]; then
+ echo "Tests failed. Aborting push."
+ exit 1
+fi
+
+echo "Tests passed. Proceeding with push."

@@ -1,0 +1,52 @@
+#!/bin/bash
+echo "Checking commit message format before committing..."
+
+INPUT_FILE=$1
+START_LINE=`head -n1 $INPUT_FILE`
+PATTERN="^(DXT)-[[:digit:]]+: .+"
+
+COMMITTER_EMAIL=$(git var -l | grep -E '^GIT_COMMITTER_IDENT=' | sed -n 's/^.* <\(.*\)> .*$/\1/p')
+
+PERMITTED_AUTHOR="dependabot"
+
+SUBJECT_LENGTH=${#START_LINE}
+DUPLICATE_MESSAGE_COUNT=$(git rev-list --all --grep="${START_LINE}" --count)
+# Set the git root folder path
+GIT_ROOT=$(git rev-parse --show-toplevel)
+
+# Define the rebase and merge paths
+REBASE_PATH="$GIT_ROOT/.git/rebase-merge"
+MERGE_PATH="$GIT_ROOT/.git/MERGE_HEAD"
+
+# Check if the rebase or merge path exists.
+if [ -f "$REBASE_PATH" ] || [ -f "$MERGE_PATH" ]; then
+  echo "Skipping commit-msg hook: We are in the middle of a rebase or merge."
+elif [[ ${COMMITTER_EMAIL,,} == *${PERMITTED_AUTHOR}* ]]; then
+  echo "Skipping commit-msg hook."
+else
+	if ! [[ "$START_LINE" =~ $PATTERN ]]; then
+      echo "Bad commit message, type should contain DXT (all caps). For example: DXT-123: commit message"
+      exit 1
+    fi
+
+  if [ "$DUPLICATE_MESSAGE_COUNT" -ge 1 ]; then
+          echo "Message already exists. Please enter a message that is unique and relevant to change(s) added"
+          exit 1
+  fi
+
+  # Hook to make sure that commit message are within the character limit (min 30 and max 72)
+
+  if [ "$SUBJECT_LENGTH" -lt 30 ]; then
+    echo "The commit subject must be at least 30 characters long."
+    echo "Your subject is only $SUBJECT_LENGTH characters: $START_LINE"
+    exit 1
+  fi
+
+  if [ "$SUBJECT_LENGTH" -gt 72 ]; then
+    echo "The commit subject must not exceed 72 characters."
+    echo "Your subject is $SUBJECT_LENGTH characters: $START_LINE"
+    exit 1
+  fi
+fi
+
+echo "Commit message passed, committing the changes"

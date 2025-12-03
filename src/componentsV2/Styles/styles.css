@@ -1,0 +1,46 @@
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 999;
+    & p {
+        text-decoration: none;
+        font-size: 0.825vw;
+    }
+}
+
+.footerItems {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 8px;
+
+    & a,
+    h5 {
+        text-decoration: none;
+        margin-right: 25px;
+    }
+    & div span:hover {
+        text-decoration: underline;
+        text-underline-offset: 4px;
+        cursor: pointer;
+    }
+}
+
+.contactUsEmail {
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    width: fit-content;
+    box-shadow: none;
+    border-radius: 10px;
+    border-width: 1px;
+    border-style: solid;
+    justify-content: center;
+}
+
+.iconStyles {
+    position: relative;
+    top: 5px;
+    right: 20px;
+}
