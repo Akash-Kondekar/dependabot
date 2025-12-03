@@ -22,7 +22,7 @@
         "@mui/icons-material": "^6.4.7",
         "@mui/material": "^6.4.7",
         "@mui/styles": "^6.4.7",
-        "@mui/x-date-pickers": "^7.27.3",
+        "@mui/x-date-pickers": "^8.19.0",
         "@react-querybuilder/material": "^8.4.0",
         "@stomp/stompjs": "^7.0.1",
         "@tiptap/core": "^2.11.5",
