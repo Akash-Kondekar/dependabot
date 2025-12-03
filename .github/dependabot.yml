@@ -3,9 +3,11 @@ updates:
     # Minor updates → monthly, merge every 2 months manually
     - package-ecosystem: npm
       directory: "/"
-      target-branch: main #main-minor
+      target-branch: main-minor
       schedule:
-          interval: monthly
+          interval: "cron"
+          cronjob: "0 0 1 */2 *" #minute 0, hour 0, day 1, every 2 months, any weekday.
+          timezone: "UTC"
       open-pull-requests-limit: 5
       ignore:
           - dependency-name: "*"
@@ -16,9 +18,11 @@ updates:
     # Major updates → monthly, merge every 6 months manually
     - package-ecosystem: npm
       directory: "/"
-      target-branch: main #main-major
+      target-branch: main-major
       schedule:
-          interval: monthly
+          interval: "cron"
+          cronjob: "0 0 1 */2 *" #minute 0, hour 0, day 1, every 2 months, any weekday.
+          timezone: "UTC"
       open-pull-requests-limit: 5
       ignore:
           - dependency-name: "*"
