@@ -6,8 +6,7 @@ updates:
       target-branch: main-minor
       schedule:
           interval: monthly
-      allow:
-          - update-type: version-update:semver-minor
+      open-pull-requests-limit: 10
 
     # Major updates → branch main-major
     - package-ecosystem: npm
@@ -15,13 +14,12 @@ updates:
       target-branch: main-major
       schedule:
           interval: monthly
-      allow:
-          - update-type: version-update:semver-major
+      open-pull-requests-limit: 10
 
-    # Security updates → branch main
+    # Security updates → branch main (must be enabled in repo settings)
     - package-ecosystem: npm
       directory: "/"
       target-branch: main
       schedule:
           interval: daily
-      security-updates-only: true
+      open-pull-requests-limit: 10
