@@ -7,10 +7,10 @@ updates:
       schedule:
           interval: monthly
       allow:
-       - dependency-name: "*"
-        update-types:
-        #   - "version-update:semver-patch"
-          - "version-update:semver-minor"
+          dependency-name: "*"
+          update-types:
+              #   - "version-update:semver-patch"
+              - "version-update:semver-minor"
       open-pull-requests-limit: 10
 
     # Major updates → branch main-major
@@ -21,11 +21,11 @@ updates:
           interval: monthly
       open-pull-requests-limit: 10
       allow:
-       - dependency-name: "*"
-        update-types:
-        #   - "version-update:semver-patch"
-          - "version-update:semver-major"
-          
+          dependency-name: "*"
+          update-types:
+              #   - "version-update:semver-patch"
+              - "version-update:semver-major"
+
     # Security updates → branch main (must be enabled in repo settings)
     - package-ecosystem: npm
       directory: "/"
