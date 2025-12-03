@@ -4,7 +4,8 @@ updates:
       directory: "/"
       target-branch: main
       schedule:
-          interval: monthly
-      # Major updates only
+          interval: "cron"
+          cron: "0 0 1 */6 *"
+          timezone: "UTC"
       allow:
           - update-type: version-update:semver-major
