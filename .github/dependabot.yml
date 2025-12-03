@@ -3,7 +3,7 @@ updates:
     # Minor updates → monthly, merge every 2 months manually
     - package-ecosystem: npm
       directory: "/"
-      target-branch: main-minor
+      target-branch: main #main-minor
       schedule:
           interval: monthly
       open-pull-requests-limit: 5
@@ -16,7 +16,7 @@ updates:
     # Major updates → monthly, merge every 6 months manually
     - package-ecosystem: npm
       directory: "/"
-      target-branch: main-major
+      target-branch: main #main-major
       schedule:
           interval: monthly
       open-pull-requests-limit: 5
