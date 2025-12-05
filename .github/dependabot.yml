@@ -1,39 +1,11 @@
 version: 2
 updates:
-    # Minor updates → monthly, merge every 2 months manually
-    - package-ecosystem: npm
-      directory: "/"
-      target-branch: main-minor
-      schedule:
-          interval: "cron"
-          cronjob: "0 0 1 */2 *" #minute 0, hour 0, day 1, every 2 months, any weekday.
-          timezone: "UTC"
-      open-pull-requests-limit: 5
-      ignore:
-          - dependency-name: "*"
-            update-types:
-                - version-update:semver-major
-                - version-update:semver-patch
-
-    # Major updates → monthly, merge every 6 months manually
-    - package-ecosystem: npm
-      directory: "/"
-      target-branch: main-major
-      schedule:
-          interval: "cron"
-          cronjob: "0 0 1 */2 *" #minute 0, hour 0, day 1, every 2 months, any weekday.
-          timezone: "UTC"
-      open-pull-requests-limit: 5
-      ignore:
-          - dependency-name: "*"
-            update-types:
-                - version-update:semver-minor
-                - version-update:semver-patch
-
-    # Security updates → daily, handled automatically
-    - package-ecosystem: npm
-      directory: "/"
-      target-branch: main
-      schedule:
-          interval: daily
-      open-pull-requests-limit: 5
+  - package-ecosystem: "npm"
+    directory: "/"
+    target-branch: "develop"
+    schedule:
+      interval: "quarterly"
+    groups:
+      all-dependencies:
+        patterns:
+          - "*"
